@@ -99,7 +99,7 @@ def validUsefulProxy(proxy):
     proxies = {"http": "http://{proxy}".format(proxy=proxy)}
     try:
         # 超过20秒的代理就不要了
-        r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=10, verify=False)
+        r = requests.get('https://signup.live.com/signup', proxies=proxies, timeout=10, verify=False)
         if r.status_code == 200:
             # logger.info('%s is ok' % proxy)
             return True

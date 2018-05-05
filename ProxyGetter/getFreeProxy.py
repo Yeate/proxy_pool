@@ -39,6 +39,10 @@ requests.packages.urllib3.disable_warnings()
     cn-proxy.com
     proxy-list.org
     www.mimiip.com to do
+
+
+    https://www.us-proxy.org/
+    https://hidemy.name
 """
 
 
@@ -250,6 +254,18 @@ class GetFreeProxy(object):
                                  r.text)
             for proxy in proxies:
                 yield ":".join(proxy)
+    @staticmethod
+    def freeProxyTwelve(total=160):
+        
+        url = 'https://www.us-proxy.org/'
+        html_tree = getHtmlTree(url)
+        try:
+            tr_list = html_tree.xpath('//*[@id="proxylisttable"]/tbody/tr')[1:]
+            for tr in tr_list:
+                yield ':'.join(tr.xpath('./td/text()')[0:2])
+        except Exception as e:
+            pass
+
 
     @staticmethod
     def freeProxyWallFirst():
