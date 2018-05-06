@@ -42,7 +42,7 @@ requests.packages.urllib3.disable_warnings()
 
 
     https://www.us-proxy.org/
-    https://hidemy.name
+    free-proxy-list
 """
 
 
@@ -53,6 +53,16 @@ class GetFreeProxy(object):
 
     def __init__(self):
         pass
+
+    @staticmethod
+    def freeProxyZero():
+        url = 'https://www.cool-proxy.net/proxies/http_proxy_list/sort:update_time/direction:desc/page:{page}'
+        for page in range(1, 18):
+                page_url = url.format(page=page)
+                tree = getHtmlTree(page_url)
+                proxy_list = tree.xpath('.//table//tr')
+                for tr in proxy_list[1:]:
+                    yield ':'.join(tr.xpath('./td/text()')[0:2])
 
     @staticmethod
     def freeProxyFirst(page=10):
