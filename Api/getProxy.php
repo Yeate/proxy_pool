@@ -10,7 +10,7 @@ if(!empty($arr)){
 	shuffle($arr);
 	echo json_encode(array('success'=>true,'msg'=>$arr['0']));die;
 }else{
-	echo json_encode(array('success'=>false,'msg'=>"redis can't run"));die;
+	echo json_encode(array('success'=>false,'msg'=>"no enough proxy"));die;
 }
 
 
