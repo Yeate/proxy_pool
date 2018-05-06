@@ -9,7 +9,7 @@ $raw_proxy_queue = 'raw_proxy';
 $useful_proxy_queue = 'useful_proxy';
 $total=$redis->hlen($raw_proxy_queue);
 $userful=$redis->hlen($useful_proxy_queue);
-echo json_encode(array('raw_proxy'=>total, 'useful_proxy'=>userful));
+echo json_encode(array('raw_proxy'=>$total, 'useful_proxy'=>$userful));
 
 
 
