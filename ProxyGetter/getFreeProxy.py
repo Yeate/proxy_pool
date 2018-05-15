@@ -54,22 +54,7 @@ class GetFreeProxy(object):
     def __init__(self):
         pass
 
-    # @staticmethod
-    # def freeProxyZero(total=160):
-    #     url = 'https://www.cool-proxy.net/proxies/http_proxy_list/sort:update_time/direction:desc/page:{page}'
-    #     for page in range(1, 18):
-    #             page_url = url.format(page=page)
-    #             tree = getHtmlTree(page_url)
-    #             proxy_list = tree.xpath('.//table//tr')
-    #             for tr in proxy_list[1:]:
-    #                 yield ':'.join(tr.xpath('./td/text()')[0:2])
-    #     html_tree = getHtmlTree(url)
-    #     try:
-    #         tr_list = html_tree.xpath('//*[@id="proxylisttable"]/tbody/tr')[1:]
-    #         for tr in tr_list:
-    #             yield ':'.join(tr.xpath('./td/text()')[0:2])
-    #     except Exception as e:
-    #         pass
+    
 
     @staticmethod
     def freeProxyFirst(page=10):
@@ -283,8 +268,19 @@ class GetFreeProxy(object):
         except Exception as e:
             pass
 
-
     @staticmethod
+    def freeProxythirteen():
+        url = 'http://proxysearcher.sourceforge.net/Proxy%20List.php?type=http&filtered=true'
+        # page_url = url.format(page=page)
+        tree = getHtmlTree(url)
+        proxy_list = tree.xpath('.//table//tr')
+        try:
+            for tr in proxy_list[1:]:
+                yield ':'.join(tr.xpath('./td/text()')[1:2])
+        except Exception as e:
+            pass
+    @staticmethod
+
     def freeProxyWallFirst():
         """
         墙外网站 cn-proxy
